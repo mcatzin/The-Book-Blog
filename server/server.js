@@ -8,8 +8,7 @@ const app = express();
 const userRouter = require('./routes/user');
 const bookRouter = require('./routes/books');
 
-
-//mongodb+srv://admin_user3:PpTkkZcsBZFnJfdO@cluster0.odoxl.mongodb.net/<dbname>?retryWrites=true&w=majority
+// mongodb+srv://admin_user3:PpTkkZcsBZFnJfdO@cluster0.odoxl.mongodb.net/<dbname>?retryWrites=true&w=majority
 mongoose.connect(config.DATABASE, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -29,10 +28,10 @@ if (process.env.NODE_ENV === 'production') {
     app.get('/*', (req, res) => {
         console.log('Works');
         res.sendFile(path.resolve(__dirname, '../client', 'build', 'index.html'));
-    })
-
-    const port = process.env.PORT || 3003;
-    console.log(port)
-    app.listen(port, () => {
-        console.log(`Listening on port ${port}`);
     });
+}
+const port = process.env.PORT || 3003;
+
+app.listen(port, () => {
+    console.log(`Listening on port ${port}`);
+});
