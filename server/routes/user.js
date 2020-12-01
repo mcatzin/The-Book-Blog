@@ -11,6 +11,7 @@ const User = require('../models/user');
 
 router.post(
     '/register',
+    auth,
     expressAsyncHandler(async (req, res) => {
         const user = new User(req.body);
         const createdUser = await user.save();
